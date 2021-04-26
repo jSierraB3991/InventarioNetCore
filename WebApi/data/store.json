@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Bodega 04",
+    "description": "",
+    "direction": "Norte",
+    "maxCapacity": 300
+  },
+  {
+    "name": "Bodega 02",
+    "description": "La mas grande que tenemos",
+    "direction": "Centro",
+    "maxCapacity": 6000
+  },
+  {
+    "name": "Bodega 03",
+    "description": "",
+    "direction": "Sur",
+    "maxCapacity": 300
+  },
+  {
+    "name": "Bodega 01",
+    "description": "La mas cerca del pais",
+    "direction": "Calle luna Calle Sol",
+    "maxCapacity": 600
+  }
+]
