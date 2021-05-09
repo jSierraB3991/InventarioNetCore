@@ -24,12 +24,10 @@ namespace IntegrationTest.Controller
         public MovementControllerTestBuyProducts()
         {
             mapper = MapperConfig.GetMapper();
-            WebApi.Infrastructure.Repository.AppDbContext dbContext = TestDb.GetContext();
-            productService = new ProductAdapter(dbContext);
+            var dbContext = TestDb.GetContext();
             storeService = new StoreAdapter(dbContext);
-            IProductStoreService productStoreService = new ProductStoreAdapter(dbContext);
-            IMovementService movementService = new MovementAdapter(dbContext, productService, storeService, productStoreService);
-            controller = new MovementController(movementService, mapper, Serilog.Log.Logger);
+            productService = new ProductAdapter(dbContext);
+            controller = MovementControllerConfig.GetMovementController(dbContext, productService, storeService, mapper);
         }
 
         [Fact]

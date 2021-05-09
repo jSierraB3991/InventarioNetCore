@@ -17,19 +17,17 @@ namespace IntegrationTest.Controller
     public class MovementControllerTestSaleProducts
     {
         private readonly IMapper mapper;
-        private IProductService productService;
-        private IStoreService storeService;
-        private MovementController controller;
+        private readonly IProductService productService;
+        private readonly IStoreService storeService;
+        private readonly MovementController controller;
 
         public MovementControllerTestSaleProducts()
         {
             mapper = MapperConfig.GetMapper();
             var dbContext = TestDb.GetContext();
-            productService = new ProductAdapter(dbContext);
             storeService = new StoreAdapter(dbContext);
-            var productStoreService = new ProductStoreAdapter(dbContext);
-            var movementService = new MovementAdapter(dbContext, productService, storeService, productStoreService);
-            controller = new MovementController(movementService, mapper, Serilog.Log.Logger);
+            productService = new ProductAdapter(dbContext);
+            controller = MovementControllerConfig.GetMovementController(dbContext, productService, storeService, mapper);
         }
 
         [Fact]
